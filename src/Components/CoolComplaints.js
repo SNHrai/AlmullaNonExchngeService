@@ -1,8 +1,15 @@
-import React from "react"
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
+import React from "react";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-function CoolComplaints({ complaint, failure, deleteRow, deleteFailRow, failureComplaintsList, arrayList }) {
+function CoolComplaints({
+  complaint,
+  failure,
+  deleteRow,
+  deleteFailRow,
+  failureComplaintsList,
+  arrayList,
+}) {
   return (
     <>
       <div className="page_two_complaint_failure">
@@ -15,7 +22,11 @@ function CoolComplaints({ complaint, failure, deleteRow, deleteFailRow, failureC
               <thead>
                 <tr>
                   <th className="Cust_t1">
-                    Customer complaint <i class="fa-solid fa-plus" onClick={() => complaint(456)}></i>{" "}
+                    Customer complaint{" "}
+                    <i
+                      class="fa-solid fa-plus"
+                      onClick={() => complaint(456)}
+                    ></i>{" "}
                   </th>
                 </tr>
               </thead>
@@ -24,8 +35,18 @@ function CoolComplaints({ complaint, failure, deleteRow, deleteFailRow, failureC
                   <tr className="Cust_t0" key={val}>
                     <td>
                       {key}{" "}
-                      <button style={{ position: "absolute", left: "35.5em", border: "none" }} onClick={(e) => deleteRow(val, e)}>
-                        <img src="./images/minusbutton.png" style={{ height: "1.5rem", border: "none" }} />
+                      <button
+                        style={{
+                          position: "absolute",
+                          left: "35.5em",
+                          border: "none",
+                        }}
+                        onClick={(e) => deleteRow(val, e)}
+                      >
+                        <img
+                          src="./images/minusbutton.png"
+                          style={{ height: "1.5rem", border: "none" }}
+                        />
                       </button>
                     </td>
                   </tr>
@@ -39,7 +60,11 @@ function CoolComplaints({ complaint, failure, deleteRow, deleteFailRow, failureC
               <thead>
                 <tr>
                   <th className="Cust_t1">
-                    Failure Reason <i class="fa-solid fa-plus" onClick={() => complaint(456)}></i>
+                    Failure Reason{" "}
+                    <i
+                      class="fa-solid fa-plus"
+                      onClick={() => complaint(456)}
+                    ></i>
                   </th>
                 </tr>
               </thead>
@@ -49,12 +74,22 @@ function CoolComplaints({ complaint, failure, deleteRow, deleteFailRow, failureC
                     <tr className="Cust_t1" key={val}>
                       <td>
                         {key}
-                        <button style={{ position: "absolute", left: "72.6em", border: "none" }} onClick={(e) => deleteFailRow(val, e)}>
-                          <img src="./images/minusbutton.png" style={{ height: "1.5rem", border: "none" }} />
+                        <button
+                          style={{
+                            position: "absolute",
+                            left: "72.6em",
+                            border: "none",
+                          }}
+                          onClick={(e) => deleteFailRow(val, e)}
+                        >
+                          <img
+                            src="./images/minusbutton.png"
+                            style={{ height: "1.5rem", border: "none" }}
+                          />
                         </button>
                       </td>
                     </tr>
-                  )
+                  );
                 })}
               </tbody>
             </table>
@@ -62,7 +97,7 @@ function CoolComplaints({ complaint, failure, deleteRow, deleteFailRow, failureC
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default CoolComplaints
+export default CoolComplaints;

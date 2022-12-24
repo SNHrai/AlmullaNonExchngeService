@@ -1,103 +1,106 @@
-import React from "react"
-import { Col, Container, Row } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
-import { useState } from "react"
-import "../../Technician.css"
-import TechnicianCoolingUnit from "./TechnicianCoolUnit"
-import PhysicalRemark from "../PhysicalRemaks/PhysicalRemark"
-import ErrorModel from "../ThankYouFolder/Error"
+import React, { useRef } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "../../Technician.css";
+import TechnicianCoolingUnit from "./TechnicianCoolUnit";
+import Header from "../header/header";
+import "./Technician.css";
 
-const tabledata = [
-  {
-    id: 1,
-    UnitDetail: "Cooling Unit",
-    KTNo: "17/30866",
-    SerialNo: "VKA94286893",
-    Chassis: " NK004102-F",
-    Model: "CITIMAX-400",
-    Date: "16.10.2022",
-    WarrantyStart: " 13.06.2022",
-    WarrantyEnd: " 16.06.2023",
-  },
-  {
-    id: 2,
-    UnitDetail: "Tail Lift",
-    KTNo: "17/30866",
-    SerialNo: "21084589",
-    Chassis: "9031793-N",
-    Model: "ALU,24V,1500KG",
-    Date: " 16.09.2022",
-    WarrantyStart: " 27.06.2021",
-    WarrantyEnd: " 26.06.2022",
-  },
-]
+import ErrorModel from "../ThankYouFolder/Error";
+import RootCause from "./RootCause";
+import FailureReason from "../FailureReason";
+import RootCauseComplaintList from "./RootCauseComplaintList";
 
 function Technician() {
-  const [arrayList, setArrayList] = useState([])
-  const [blackBg, setblackBg] = useState("none")
-  const [eValue, setEValue] = useState()
-  const [msg, setMsg] = useState("")
-  const [completSubmite, setcompletSubmite] = useState()
-  const [customerComplaint, setCustomerComplaint] = useState([])
-  const [omplistf, setomplistf] = useState("block")
+  const [arrayList, setArrayList] = useState([]);
+  const [blackBg, setblackBg] = useState("none");
+  const [eValue, setEValue] = useState();
+  const [msg, setMsg] = useState("");
+  const [completSubmite, setcompletSubmite] = useState();
+  const [customerComplaint, setCustomerComplaint] = useState([]);
+  const [omplistf, setomplistf] = useState("block");
+  const [close, setClose] = useState(true);
+  const [engineOilDrain, setEngineOilDrain] = useState(false);
+  const [engineOilHose, setEngineOilHose] = useState(false);
+  const [engineCylinderHead, setEngineCylinderHead] = useState(false);
+  const [engineOilFilter, setEngineOilFilter] = useState(false);
+  const [failureComplaintsList, setFailureComplaintsList] = useState([]);
 
-  function submit() {
-    setMsg({
-      title: "Successfully Sent For Quote Preparation.",
-    })
-  }
-  const errorHandler = () => {
-    setMsg("")
-  }
+  const [rootCauseCauseComplaintList, setRootCauseComplaintList] = useState([]);
+  const [loseBelt, setLoseBelt] = useState(false);
+  const [noBelt, setNoBelt] = useState(false);
+  const [beltIssue, setBeltIssue] = useState(false);
+  const [changeBelt, setChangeBelt] = useState(false);
+  const show = useRef(false);
 
-  const navigate = useNavigate()
+  const handleRadioButton = (e) => {
+    setEValue(e.target.value);
+  };
 
-  const datas = [
+  // const handleShowBtn = () => {
+  //   show.current = true;
+  // };
+
+  console.log(show);
+
+  const complaint = () => {
+    setblackBg("block");
+    show.current = true;
+    setomplistf("block");
+  };
+
+  console.log("inside technician " + rootCauseCauseComplaintList);
+
+  const tabledata = [
     {
       id: 1,
-      customerComplaint: "Engine oil leak ",
-      failureReason: "Engine oil Drain extension leakEngine",
-      probableRootCause: "Derive belt expand",
-      suggestedRectifiction: "Belt Replacement",
+      UnitDetail: "Cooling Unit",
+      KTNo: "17/30866",
+      SerialNo: "VKA94286893",
+      Chassis: " NK004102-F",
+      Model: "CITIMAX-400",
+      Date: "16.10.2022",
+      WarrantyStart: " 13.06.2022",
+      WarrantyEnd: " 16.06.2023",
     },
     {
       id: 2,
-      // customerComplaint: "Engine oil leak ",
-      failureReason: "Engine oil Hose ",
-      probableRootCause: "Derive belt loose",
-      suggestedRectifiction: "Motor Replacemen",
+      UnitDetail: "Tail Lift",
+      KTNo: "17/30866",
+      SerialNo: "21084589",
+      Chassis: "9031793-N",
+      Model: "ALU,24V,1500KG",
+      Date: " 16.09.2022",
+      WarrantyStart: " 27.06.2021",
+      WarrantyEnd: " 26.06.2022",
     },
-  ]
+  ];
+  function submit() {
+    setMsg({
+      title: "Successfully Sent For Quote Preparation.",
+    });
+  }
 
-  var Referenceno = "300021572"
-  var location = "Shuwaikh Van 1"
-  var refer = "915974 - BOUTIQAAT INTERNATIONAL CATERING SERVICES"
+  const demooo = (e) => {
+    setcompletSubmite(e.target.value);
+  };
+
+  const errorHandler = () => {
+    setMsg("");
+  };
+
+  const navigate = useNavigate();
+  var Referenceno = "300021572";
+  var location = "Shuwaikh Van 1";
+  var refer = "915974 - BOUTIQAAT INTERNATIONAL CATERING SERVICES";
 
   return (
     <>
       <Col sm="12" md="12" lg="12">
         <Row>
+          <Header name={"shakeel siddiqui"} />
           <div className="Page_two_logoAndLogOut_out">
-            <img src="/images/bitmap@2x.png" alt="example" />
-            <div className="vert_line"></div>
-            <h3>
-              <b> Welcome to Al Mulla Industries Service Mobile Solutions</b>
-            </h3>
-            <br />
-          </div>
-          <div className="heading_ing">
-            <div className="header_text">
-              <span>Shakeel Siddiqui</span>
-            </div>
-
-            <div className="LogOut_out">
-              <i type="button" className="correct-img" onClick={() => navigate("/")}>
-                <img src="Images/shape@2x.png" />
-              </i>
-              <h1 className="head_er">
-                <b>Logout</b>{" "}
-              </h1>
-            </div>
             <div className="CardReference_ref_card">
               <h2 className="card_ref_ref_card">
                 <b>Job Card Reference Number - {Referenceno}</b>{" "}
@@ -148,36 +151,71 @@ function Technician() {
           </tr>
         </table>
       </div>
-      {/* <div style={{ marginTop: "8rem" }}>
-        <PhysicalRemark />
-      </div> */}
 
-      <div style={{ height: "700px" }}>
-        <TechnicianCoolingUnit datas={datas} />
+      <div style={{ height: "600px", width: "50rem", marginTop: "15.3rem" }}>
+        <TechnicianCoolingUnit
+          complaint={complaint}
+          failureComplaintsList={failureComplaintsList}
+        />
       </div>
+        <div className="main_black_div" style={{ display: blackBg }}>
+          <div
+            className="page_two_complaint_list"
+            onChange={demooo}
+            style={{ display: omplistf }}
+          >
+            {show && (
+              <RootCause
+                rootCauseComplaintList={rootCauseCauseComplaintList}
+                handleShowBtn={complaint}
+              />
+            )}
+          </div>
+        </div>
 
-      {msg && <ErrorModel title={msg.title} message={msg.message} onClick={() => (window.location.href = "/technicianview")} />}
+      <FailureReason
+        setFailureComplaintsList={setFailureComplaintsList}
+        failureComplaintsList={failureComplaintsList}
+        engineOilDrain={engineOilDrain}
+        setEngineOilDrain={setEngineOilDrain}
+        engineOilHose={engineOilHose}
+        setEngineOilHose={setEngineOilHose}
+        engineCylinderHead={engineCylinderHead}
+        setEngineCylinderHead={setEngineCylinderHead}
+        engineOilFilter={engineOilFilter}
+        setEngineOilFilter={setEngineOilFilter}
+        eValue={eValue}
+      />
+
+      {msg && (
+        <ErrorModel
+          title={msg.title}
+          message={msg.message}
+          onClick={() => (window.location.href = "/technicianview")}
+        />
+      )}
       <div className="job_card_card">
         <button className="job_cardbtn_btn" onClick={submit}>
           <b>Send for Quote Preparation</b>{" "}
         </button>
       </div>
 
-      {/* <div className="Break_cool_unit">
-      <h2 >Breakdown Analysis For Cooling Unit</h2>
-      <div className="fail_complaint">
-      <div className="complain">
-      <p> Customer complaint </p>
-      <i class="fa-solid fa-plus"></i>
+      <div>
+        <RootCauseComplaintList
+          rootCauseCauseComplaintList={rootCauseCauseComplaintList}
+          setRootCauseComplaint={setRootCauseComplaintList}
+          loseBelt={loseBelt}
+          setLoseBelt={setLoseBelt}
+          noBelt={noBelt}
+          setNoBelt={setNoBelt}
+          setbeltIssue={setBeltIssue}
+          beltIssue={beltIssue}
+          changeBelt={changeBelt}
+          setChangeBelt={setChangeBelt}
+        />
       </div>
-        <div className="fail">
-        <p> Failure Reason </p>
-        <i class="fa-solid fa-plus" ></i>
-        </div>
-        </div>
-      </div> */}
     </>
-  )
+  );
 }
 
-export default Technician
+export default Technician;

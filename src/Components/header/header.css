@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header_img {
+    margin-top: 1rem;
+}
+
+.header_img img {
+  height: 3rem;
+}
+
+.vl {
+    border-right: 2px dashed rgb(0, 0, 0);
+    height: 39pt;
+    width: 1px;
+    position: absolute;
+    left: 12%;
+    /* margin-left: -39rem; */
+    /* margin-left: -540px; */
+    top: 2px;
+  }
+
+  .header_img h3{
+    padding-left: 13rem; 
+    position: 7rem;
+    position: absolute;
+    top: 0rem;
+    font-size: 14pt;
+  }
+
+.header_text span {
+  font-size: 1.5rem !important;
+  margin-top: 1rem;
+  position: relative;
+  top: 7rem;
+  right: 13rem;
+}
+
+.header_img span{
+    margin-left: 13.1rem;
+    position: absolute;
+    top: 7%;
+    font-size: 13pt;
+}
+
+
+.heading {
+    position: absolute;
+    left: 92rem;
+    margin-top: -40px;
+}
+
+.logout_btn i img{
+    width: 1.5rem;
+}
+
+.header_logout_btn {
+    font-size: 20px;
+    display: contents;
+}
